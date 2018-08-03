@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Yongbo Tan">
+    <title>自驾游学</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+
+  <body ng-app="routeApp" ng-controller="routeCtrl">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <img src="imgs/logo.png" alt="Trulli" width="105" height="52">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar navbar-default collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li ng-repeat="route in routes" ng-class="{dropdown: route.routes}" class="nav-item dropdown">
+            <button ng-class="{'dropdown-toggle': route.routes}" class="btn btn-success" data-toggle="dropdown">{{route.city}}<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li ng-repeat="subroute in route.routes">
+                <a class="btn btn-primary" href='routes/{{subroute.url}}' target="map" ng-click="getName(subroute.name)">{{subroute.name}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="container-fluid">
+      <h3 style="color:blue; padding-top:82px;">自驾游路线：{{name}}</h3>
+      <div class="row">
+        <iframe width="100%" height="850px" name="map" allowfullscreen></iframe>
+      </div>
+    </main>
+
+
+    <!--core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script data-require="angular.js@1.2.22" data-semver="1.2.22" src="https://code.angularjs.org/1.2.22/angular.js"></script>
+    <script src="https://code.angularjs.org/1.2.20/angular-route.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="scripts/app.js"></script>
+
+  </body>
+</html>
